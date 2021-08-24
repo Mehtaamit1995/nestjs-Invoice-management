@@ -15,10 +15,5 @@ signUp(@Body() authCredentialsDto: AuthCredentialsDto): Promise<void> {
     signIn(@Body() authCredentialsDto: AuthCredentialsDto): Promise<{ accessToken:string }> {
         return this.authService.signIn(authCredentialsDto);
     } 
-
-@Post('/logout')
-    logout(@Body() authCredentialsDto: AuthCredentialsDto): Promise<{generateAuthToken: string}>{
-        return this.authService.logout(authCredentialsDto);
-    }
 }
  

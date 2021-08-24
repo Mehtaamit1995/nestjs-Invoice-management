@@ -31,8 +31,4 @@ export class AuthService {
             throw new UnauthorizedException('Please check your login credentials'); 
         }
     }
-
-    async logout(authCredentialsDto: AuthCredentialsDto): Promise<void> {
-        return this.usersRepository.createUser(authCredentialsDto);
-    }
 }
