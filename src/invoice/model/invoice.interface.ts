@@ -11,6 +11,5 @@ customer?: string;
 invoiceNo?: string;
 description?: string;
 taxRate: number;
-created_at: Date;
-updated_at: Date;
+items: Array<{ description: string; rate: number; quantity: number }>;
 }

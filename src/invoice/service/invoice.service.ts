@@ -15,11 +15,12 @@ export class InvoiceService {
         private customerService: CustomerService
       ) { }
     
-     async create(invoice: Invoice): Promise<InvoiceEntity> {
+      async create(invoice: Invoice): Promise<InvoiceEntity> {
         const customer = await this.customerService.findOne(invoice.customer);
         const subTotal = invoice.items.reduce((acc, curr) => {
           return acc + Number((curr.rate * curr.quantity).toFixed(2))
         }, 0)
+
     
         const taxAmount = subTotal * Number((invoice.taxRate / 100).toFixed(2));
         const total = subTotal + taxAmount;

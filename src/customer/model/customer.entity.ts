@@ -35,6 +35,7 @@ export class CustomerEntity {
         this.email = this.email.toLowerCase();
     }
 
+    // one customer can have multiple invoices.
     @OneToMany(type => InvoiceEntity, invoice => invoice.customer)
     invoices: InvoiceEntity[]
 

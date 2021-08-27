@@ -30,7 +30,6 @@ export class InvoiceEntity {
     taxRate: number;
 
     // one customer can have multiple invoices
-
     @ManyToOne(type => CustomerEntity, customer => customer.invoices)
     customer: CustomerEntity;
 
