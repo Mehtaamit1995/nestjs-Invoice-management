@@ -8,6 +8,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Module({
   imports: [TypeOrmModule.forFeature([InvoiceEntity]), forwardRef(() => CustomerEntity)],
   providers: [InvoiceService],
-  controllers: [InvoiceController]
+  controllers: [InvoiceController],
+  exports: [InvoiceService]
 })
 export class InvoiceModule {}

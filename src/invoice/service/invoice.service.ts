@@ -36,7 +36,6 @@ export class InvoiceService {
     
       }
 
-
       findAll(): Promise<InvoiceEntity[]> {
         return this.invoiceRepository.find();
       }
@@ -51,4 +50,5 @@ export class InvoiceService {
         return this.invoiceRepository.findOne(id);
       }
 }
+
 

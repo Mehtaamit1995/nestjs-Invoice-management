@@ -11,17 +11,23 @@ export class InvoiceController {
 
 
     // @Get()
-    // findAll(): Observable<Invoice> {
-    //     return this.invoiceService.findAll();
+    // findAll(): Promise<InvoiceEntity[]> {
+    // return this.invoiceService.findAll();
     // }
 
     // @Get()
     // findByCustomer(id: string): Promise<InvoiceEntity[]>{
-    //     return this.invoiceRepository.createQueryBuilder("invoice")
-    //     .where("invoice.customer = :id", { id })
-    //     .getMany();
-    //   }
+    // return this.invoiceRepository.createQueryBuilder("invoice")
+    // .where("invoice.customer = :id", { id })
+    // .getMany();
+    //  }
 
+    // @Get()
+    // findOne(id: string) : Promise <InvoiceEntity>{
+    // return this.invoiceRepository.findOne(id);    
+    // }
 
-   
+    
+
+    
 }
