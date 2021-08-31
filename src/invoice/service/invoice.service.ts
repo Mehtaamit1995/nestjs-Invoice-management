@@ -1,9 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable , NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { InvoiceEntity } from '../model/invoice.entity';
 import {Invoice } from '../model/invoice.interface';
 import { Repository } from 'typeorm';
 import { CustomerService } from '../../customer/service/customer.service';
+import { Customer } from 'src/customer/model/customer.interface';
 
 
 @Injectable()
@@ -40,15 +41,27 @@ export class InvoiceService {
         return this.invoiceRepository.find();
       }
     
-      findByCustomer(id: string): Promise<InvoiceEntity[]>{
-        return this.invoiceRepository.createQueryBuilder("invoice")
+      async findByCustomer(id: string): Promise<InvoiceEntity[]>{
+        return await this.invoiceRepository.createQueryBuilder("invoice")
         .where("invoice.customer = :id", { id })
         .getMany();
-      }
+      } 
     
-      findOne(id: string): Promise<InvoiceEntity> {
-        return this.invoiceRepository.findOne(id);
+      async findOne(id: string): Promise<InvoiceEntity> {
+        return await this.invoiceRepository.findOne(id);
       }
+
+      async deleteInvoice(id: string): Promise<void> {
+        const result = await this.invoiceRepository.delete(id);
+        
+        if(result.affected === 0) {
+            throw new NotFoundException(`Task with ID "${id}" not found`)
+        }
+    }
+
+    
+
+
 }
 
 
