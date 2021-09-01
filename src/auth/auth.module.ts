@@ -40,6 +40,7 @@ import { RolesGuard } from './guards/roles.guard';
 import { JwtAuthGuard } from './guards/jwt-guards';
 import { JwtStrategy } from './guards/jwt-strategy';
 import { UserModule } from 'src/user/user.module';
+import { MailModule  } from '../mail/mail.module';
 
 @Module({
     imports: [
@@ -51,7 +52,8 @@ import { UserModule } from 'src/user/user.module';
                 secret: configService.get('JWT_SECRET'),
                 signOptions: {expiresIn: '3000'}
             })
-        })
+        }),
+        MailModule
     ],
     providers: [AuthService, RolesGuard, JwtAuthGuard, JwtStrategy ],
     exports: [AuthService]

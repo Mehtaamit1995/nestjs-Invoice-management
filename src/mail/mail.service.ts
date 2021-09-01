@@ -1,4 +1,4 @@
-// import { MailerService } from '@nestjs-modules/mailer';
+import { MailerService } from '@nestjs-modules/mailer';
 import { Injectable } from '@nestjs/common';
 import { CustomerEntity } from '../customer/model/customer.entity';
 
@@ -11,14 +11,11 @@ export class MailService {
 
     await this.mailerService.sendMail({
       to: customerEntity.email,
-      // from: '"Support Team" <support@example.com>', // override default from
-      subject: 'Welcome to Nice App! Confirm your Email',
-      template: './confirmation', // `.hbs` extension is appended automatically
-      context: { // ✏️ filling curly brackets with content
+      subject: 'Invoice ',
+      template: './invoice',
+      context: { 
         name: customerEntity.name,
         url,
-
-
       },
     });
   }
